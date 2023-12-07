@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+  <title>Bucks Centre for the Performing Arts (BCPA)</title>
+  <link rel="stylesheet" type="text/css" href="stylefront.css" th:href="@{/stylefront.css}">
+  
+<style>
+    .loggingform{
+        position:fixed;
+        top:30%;
+        bottom:30%;
+        left:30%;
+        width:35%;
+        background-color: transparent;
+        z-index: 10000;
+        display:block;
+    }
+
+.login-form-wrap {
+    width: 100%;
+    
+   background-repeat: no-repeat;
+    background-position: center;
+    background-position: center;
+    background-size: cover;}
+    .login-box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 100%;}
+        .login-content-warp {
+            padding: 30px;
+            background: #505050d1;
+            width: 280px;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            border-radius: 35px;
+            border-top: 5px solid #94afda;}
+
+            .profile-form {
+                display: flex;
+                flex-direction: column;
+                align-items: center;}
+
+        
+            
+            .butn-sign {
+                padding: 20px 0px;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;}
+                .button {
+                    background-color: rgb(66, 123, 238);
+                    color: #2a2a2a;
+                    border: none;
+                    font-weight: 600;
+                    height: 40px;
+                    width: 74%;
+                    border-radius: 8px;
+                    font-size: 16px;
+                    text-align: center;
+                    text-transform: capitalize;
+                    border: 2px solid #91add8;}
+                    .button:hover {
+                        background-color: #9e9e9e00;
+                        color: #fffcfc;
+                        border: 2px solid #91afd8;
+                        cursor: pointer;
+                        transition: 1s;
+                    }
+                    .buttonclose {
+                    background-color: transparent;
+                    color: #cf3030;
+                    cursor: pointer;
+                   }
+                   .buttonclose:hover {
+                       
+                        color: rgb(204, 108, 239);
+                       
+                        cursor: pointer;
+                        transition: 1s;
+                    }
+              
+            .form {
+                width: 100%;
+            }
+                .email-input,
+                .password-input {
+                    margin: 12px 0px;
+                    position: relative;}
+                    .email {
+                        position: absolute;
+                        top: 50%;
+                        right: 0;
+                        transform: translate(-50%, -50%);
+                        font-size: 18px;
+                        color: #7c7c7c;
+                    }
+                    .input {
+                        
+                        border: none;
+                        width: 100%;
+                        font-size: 16px;
+                        padding-left: 10px;}
+                        &:focus-visible {
+                            outline: none;
+                        }
+                        &::placeholder {
+                            color: gray;
+                        }
+                  
+    
+            
+      
+</style>
+    </head>
+    <body>
+        <div class="loggingform" id="logginform">
+
+            <div class="login-form-wrap">
+                <div class="login-box">
+                    <div class="login-content-warp">
+                        <div class="profile-form">
+                             <span class="profile-title"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="rgb(66, 123, 238)" class="bi bi-person" viewBox="0 0 16 16">
+                                <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664z"/>
+                              </svg> User Login</span>
+                        </div>
+                        <form th:action="@{/login}" method="post">
+                            <div class="email-input">
+                                <span class="email"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="rgb(66, 123, 238)" class="bi bi-person" viewBox="0 0 16 16">
+                                    <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664z"/>
+                                  </svg> </span>
+                                <input type="text" name="username" class="search-input" placeholder="User Name">
+                            </div>
+        
+                            <div class="password-input">
+                                <span class="email"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="rgb(66, 123, 238)" class="bi bi-fingerprint" viewBox="0 0 16 16">
+                                    <path d="M8.06 6.5a.5.5 0 0 1 .5.5v.776a11.5 11.5 0 0 1-.552 3.519l-1.331 4.14a.5.5 0 0 1-.952-.305l1.33-4.141a10.5 10.5 0 0 0 .504-3.213V7a.5.5 0 0 1 .5-.5Z"/>
+                                    <path d="M6.06 7a2 2 0 1 1 4 0 .5.5 0 1 1-1 0 1 1 0 1 0-2 0v.332c0 .409-.022.816-.066 1.221A.5.5 0 0 1 6 8.447c.04-.37.06-.742.06-1.115zm3.509 1a.5.5 0 0 1 .487.513 11.5 11.5 0 0 1-.587 3.339l-1.266 3.8a.5.5 0 0 1-.949-.317l1.267-3.8a10.5 10.5 0 0 0 .535-3.048A.5.5 0 0 1 9.569 8Zm-3.356 2.115a.5.5 0 0 1 .33.626L5.24 14.939a.5.5 0 1 1-.955-.296l1.303-4.199a.5.5 0 0 1 .625-.329Z"/>
+                                    <path d="M4.759 5.833A3.501 3.501 0 0 1 11.559 7a.5.5 0 0 1-1 0 2.5 2.5 0 0 0-4.857-.833.5.5 0 1 1-.943-.334Zm.3 1.67a.5.5 0 0 1 .449.546 10.72 10.72 0 0 1-.4 2.031l-1.222 4.072a.5.5 0 1 1-.958-.287L4.15 9.793a9.72 9.72 0 0 0 .363-1.842.5.5 0 0 1 .546-.449Zm6 .647a.5.5 0 0 1 .5.5c0 1.28-.213 2.552-.632 3.762l-1.09 3.145a.5.5 0 0 1-.944-.327l1.089-3.145c.382-1.105.578-2.266.578-3.435a.5.5 0 0 1 .5-.5Z"/>
+                                    <path d="M3.902 4.222a4.996 4.996 0 0 1 5.202-2.113.5.5 0 0 1-.208.979 3.996 3.996 0 0 0-4.163 1.69.5.5 0 0 1-.831-.556Zm6.72-.955a.5.5 0 0 1 .705-.052A4.99 4.99 0 0 1 13.059 7v1.5a.5.5 0 1 1-1 0V7a3.99 3.99 0 0 0-1.386-3.028.5.5 0 0 1-.051-.705ZM3.68 5.842a.5.5 0 0 1 .422.568c-.029.192-.044.39-.044.59 0 .71-.1 1.417-.298 2.1l-1.14 3.923a.5.5 0 1 1-.96-.279L2.8 8.821A6.531 6.531 0 0 0 3.058 7c0-.25.019-.496.054-.736a.5.5 0 0 1 .568-.422Zm8.882 3.66a.5.5 0 0 1 .456.54c-.084 1-.298 1.986-.64 2.934l-.744 2.068a.5.5 0 0 1-.941-.338l.745-2.07a10.51 10.51 0 0 0 .584-2.678.5.5 0 0 1 .54-.456Z"/>
+                                    <path d="M4.81 1.37A6.5 6.5 0 0 1 14.56 7a.5.5 0 1 1-1 0 5.5 5.5 0 0 0-8.25-4.765.5.5 0 0 1-.5-.865Zm-.89 1.257a.5.5 0 0 1 .04.706A5.478 5.478 0 0 0 2.56 7a.5.5 0 0 1-1 0c0-1.664.626-3.184 1.655-4.333a.5.5 0 0 1 .706-.04ZM1.915 8.02a.5.5 0 0 1 .346.616l-.779 2.767a.5.5 0 1 1-.962-.27l.778-2.767a.5.5 0 0 1 .617-.346Zm12.15.481a.5.5 0 0 1 .49.51c-.03 1.499-.161 3.025-.727 4.533l-.07.187a.5.5 0 0 1-.936-.351l.07-.187c.506-1.35.634-2.74.663-4.202a.5.5 0 0 1 .51-.49"/>
+                                  </svg></span>
+                                <input type="password" name="password" placeholder="password">
+                            </div>
+        
+                            <div class="forget-link-warp">
+                                
+                                <div>
+                                <div th:if="${param.error}" >
+                                        Invalid username and password.
+                                    </div>
+                                    <div th:if="${param.logout}">
+                                        You have been logged out.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="butn-sign">
+                                <input type="submit" class="button" value="Sign In"/><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-door-open" viewBox="0 0 16 16">
+                                    <path d="M8.5 10c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1"/>
+                                    <path d="M10.828.122A.5.5 0 0 1 11 .5V1h.5A1.5 1.5 0 0 1 13 2.5V15h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V1.5a.5.5 0 0 1 .43-.495l7-1a.5.5 0 0 1 .398.117zM11.5 2H11v13h1V2.5a.5.5 0 0 0-.5-.5M4 1.934V15h6V1.077z"/>
+                                  </svg>
+                            </div>
+                            <div class="butn-sign">
+                                <a  class="buttonclose" onclick="toggleContainer()"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+                                  </svg></a>
+                            </div>
+                        </form>
+        
+                        
+        
+                        
+                    </div>
+                </div>
+            </div>
+           
+ </div>
+
+ <script>
+function toggleContainer() {
+        var container = document.getElementById('logginform');
+        var currentDisplay = container.style.display;
+
+        // Toggle between "block" and "none"
+        container.style.display = (currentDisplay === 'block') ? 'none' : 'block';
+    }
+ </script>
+  
+    <div class="sidebar sb-left">
+      <nav class="mobile-nav">
+        <ul>
+          <li ><a onclick="toggleContainer() "><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+            <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664z"/>
+          </svg><p th:inline="text">Hy,<span th:remove="tag" sec:authentication="name"></span>!</p>
+          </a></li>
+         
+          <li class="active"><a href="#"><i class="fa fa-film"></i><span>Bucks Center</span></a></li>
+          <li><a href="/booking"><i class="fa fa-ticket"></i><span>Book Now</span></a></li>
+          <li><a href="/"><i class="fa fa-trophy"></i><span>Top Shows</span></a></li>
+       
+          <li><a href="mailto: info@unicoais.com"><i class="fa fa-envelope"></i><span>Contact us</span></a></li>
+        </ul>
+      </nav>
+    </div>
+    <div id="site-container">
+      <main id="main">
+        <header id="main-header">
+          <div class="inner-container">
+            <div class="sb-toggle-left">
+              <span class="menu-icon"></span>
+              <span class="menu-icon-text">Menu</span>
+            </div>
+            <h1><a href="https://unicoais.com" >BCPA</a></h1>
+            <ul class="header-nav">
+              <li><a href="https://facebook.com/" target="_blank" rel="nofollow"><i class="fa fa-facebook"></i></a></li>
+              <li><a href="https://twitter.com" target="_blank" rel="nofollow"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="https://www.instagram.com/" target="_blank" rel="nofollow"><i class="fa fa-instagram"></i></a></li>
+            </ul>
+          </div>
+        </header>
+        <div id="header-secondary">
+          <div class="inner-container">
+            <nav class="filters">
+              <ul>
+               
+                <li class="dropdown abc-filter">
+                  <div class="dropdown-toggle" data-toggle="dropdown">ABC<i class="fa fa-angle-down"></i></div>
+                  <ul class="dropdown-menu">
+                    <li class="abc"><a href="/?ap=numeric">#</a></li>
+                    <li class="abc"><a href="/?ap=A">A</a></li>
+                    <li class="abc"><a href="/?ap=B">B</a></li>
+                    <li class="abc"><a href="/?ap=C">C</a></li>
+                    <li class="abc"><a href="/?ap=D">D</a></li>
+                    <li class="abc"><a href="/?ap=E">E</a></li>
+                    <li class="abc"><a href="/?ap=F">F</a></li>
+                    <li class="abc"><a href="/?ap=G">G</a></li>
+                    <li class="abc"><a href="/?ap=H">H</a></li>
+                    <li class="abc"><a href="/?ap=I">I</a></li>
+                    <li class="abc"><a href="/?ap=J">J</a></li>
+                    <li class="abc"><a href="/?ap=K">K</a></li>
+                    <li class="abc"><a href="/?ap=L">L</a></li>
+                    <li class="abc"><a href="/?ap=M">M</a></li>
+                    <li class="abc"><a href="/?ap=N">N</a></li>
+                    <li class="abc"><a href="/?ap=O">O</a></li>
+                    <li class="abc"><a href="/?ap=P">P</a></li>
+                    <li class="abc"><a href="/?ap=Q">Q</a></li>
+                    <li class="abc"><a href="/?ap=R">R</a></li>
+                    <li class="abc"><a href="/?ap=S">S</a></li>
+                    <li class="abc"><a href="/?ap=T">T</a></li>
+                    <li class="abc"><a href="/?ap=V">V</a></li>
+                    <li class="abc"><a href="/?ap=W">W</a></li>
+                    <li class="abc"><a href="/?ap=Y">Y</a></li>
+                    <li class="abc"><a href="/?ap=Z">Z</a></li>
+                  </ul>
+                </li>
+                <li class="search">
+                  <form method="get" role="form" id="searchform" autocomplete="off" action="">
+                    <i class="fa fa-search"></i>
+                    <input id="search" name="s" type="search" class="search-input" value="" placeholder="Search...">
+                  </form>
+                  <div class="live-search"></div>
+                </li>
+              </ul>
+            </nav>
+            
+            <p id="slogan">Book a Movie Online</p>
+          </div>
+        </div>
+        <section id="content" class="inner-container">
+          
+          <div class="item-container">
+            <div class="item">
+              <a href="/booking">
+               <div class="item-flip">
+                  <div class="item-inner">
+                    <img src="https://image.tmdb.org/t/p/w370_and_h556_bestv2/eDnHgozW8vfOaLHzfpHluf1GZCW.jpg" alt="Archive" >
+                  </div>
+  
+                  
+                  <div class="item-details">
+                    <div class="item-details-inner">
+              
+    <p class="movie-description">2038: George Almore is working on a true human-equivalent AI, and his latest prototype is almost rea&hellip;</p>
+                      <div class="watch-btn">
+                        <div class="imdb-rating" data-content="6.3"  >
+                          <i class="fa fa-star"></i>Archive</div>
+                        <span class="movie-date">2020</span>
+                        <span>Book Seat</span>
+  
+                      
+                      </div>
+                    </div>
+                  </div>
+                </a>
+                </div>
+             
+            </div>
+            <div class="item">
+              <a href="/booking">
+                <div class="item-flip">
+                  <div class="item-inner">
+                    <img src="https://image.tmdb.org/t/p/w370_and_h556_bestv2/gfJGlDaHuWimErCr5Ql0I8x9QSy.jpg" alt="Wonder Woman">
+                  </div>
+                  <div class="item-details">
+                    <div class="item-details-inner">
+                      <h2 class="movie-title">Wonder Woman</h2>
+                      <p class="movie-description">An Amazon princess comes to the world of Man in the grips of the First World War to confront the for&hellip;</p>
+                      <div class="watch-btn">
+                        <div class="imdb-rating" data-content="7.4">
+                          <i class="fa fa-star"></i>7.4</div>
+                        <span class="movie-date">2017</span>
+                        <span>Book Seat</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="item">
+              <a href="/booking">
+                <div class="item-flip">
+                  <div class="item-inner">
+                    <img src="https://image.tmdb.org/t/p/w370_and_h556_bestv2/u6c5xkR0eIzlnxcQoMBlySH6ann.jpg" alt="Deepwater Horizon">
+                  </div>
+                  <div class="item-details">
+                    <div class="item-details-inner">
+                      <h2 class="movie-title">Deepwater Horizon</h2>
+                      <p class="movie-description">A story set on the offshore drilling rig Deepwater Horizon, which exploded during April 2010 and cre&hellip;</p>
+                      <div class="watch-btn">
+                        <div class="imdb-rating" data-content="7.1">
+                          <i class="fa fa-star"></i>7.1</div>
+                        <span class="movie-date">2016</span>
+                        <span>Book Seat</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="item">
+              <a href="/booking">
+                <div class="item-flip">
+                  <div class="item-inner">
+                    <img src="https://image.tmdb.org/t/p/w370_and_h556_bestv2/yf5IuMW6GHghu39kxA0oFx7Bxmj.jpg" alt="Palm Springs">
+                  </div>
+                  <div class="item-details">
+                    <div class="item-details-inner">
+                      <h2 class="movie-title">Palm Springs</h2>
+                      <p class="movie-description">When carefree Nyles and reluctant maid of honor Sarah have a chance encounter at a Palm Springs wedd&hellip;</p>
+                      <div class="watch-btn">
+                        <div class="imdb-rating" data-content="7.5">
+                          <i class="fa fa-star"></i>7.5</div>
+                        <span class="movie-date">2020</span>
+                        <span>Book Seat</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="item">
+              <a href="/booking">
+                <div class="item-flip">
+                  <div class="item-inner">
+                    <img src="https://image.tmdb.org/t/p/w370_and_h556_bestv2/2kNnf7BwRCEm4bcFkdiE0T4U25s.jpg" alt="Guns Akimbo">
+                  </div>
+                  <div class="item-details">
+                    <div class="item-details-inner">
+                      <h2 class="movie-title">Guns Akimbo</h2>
+                      <p class="movie-description">An ordinary guy suddenly finds himself forced to fight a gladiator-like battle for a dark website th&hellip;</p>
+                      <div class="watch-btn">
+                        <div class="imdb-rating" data-content="6.3">
+                          <i class="fa fa-star"></i>6.3</div>
+                        <span class="movie-date">2019</span>
+                        <span>Book Seat</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+           
+            <div class="item">
+              <a href="/booking">
+                <div class="item-flip">
+                  <div class="item-inner">
+                    <span class="item-tv">TV<i></i></span><img src="https://image.tmdb.org/t/p/w370_and_h556_bestv2/ggFHVNu6YYI5L9pCfOacjizRGt.jpg" alt="Breaking Bad">
+                  </div>
+                  <div class="item-details">
+                    <div class="item-details-inner">
+                      <h2 class="movie-title">Breaking Bad</h2>
+                      <p class="movie-description">When Walter White, a New Mexico chemistry teacher, is diagnosed with Stage III cancer and given a pr&hellip;</p>
+                      <div class="watch-btn">
+                        <div class="imdb-rating" data-content="9.5">
+                          <i class="fa fa-star"></i>9.5</div>
+                        <span class="movie-date">2008</span>
+                        <span>Book Seat</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+             <div class="item">
+              <a href="/booking">
+                <div class="item-flip">
+                  <div class="item-inner">
+                    <img src="https://image.tmdb.org/t/p/w370_and_h556_bestv2/prdFM08mGvVDA6uQxKJh8n8Vek1.jpg" alt="How It Ends">
+                  </div>
+                  <div class="item-details">
+                    <div class="item-details-inner">
+                      <h2 class="movie-title">How It Ends</h2>
+                      <p class="movie-description">A desperate father tries to return home to his pregnant wife after a mysterious apocalyptic event tu&hellip;</p>
+                      <div class="watch-btn">
+                        <div class="imdb-rating" data-content="5.0">
+                          <i class="fa fa-star"></i>5.0</div>
+                        <span class="movie-date">2018</span>
+                        <span>Book Seat</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="item">
+              <a href="/booking">
+                <div class="item-flip">
+                  <div class="item-inner">
+                    <img src="https://image.tmdb.org/t/p/w370_and_h556_bestv2/h4VB6m0RwcicVEZvzftYZyKXs6K.jpg" alt="Birds of Prey (and the Fantabulous Emancipation of One Harley Quinn)">
+                  </div>
+                  <div class="item-details">
+                    <div class="item-details-inner">
+                      <h2 class="movie-title">Birds of Prey (and the Fantabulous Emancipation of One Harley Quinn)</h2>
+                      <p class="movie-description">Harley Quinn joins forces with a singer, an assassin and a police detective to help a young girl who&hellip;</p>
+                      <div class="watch-btn">
+                        <div class="imdb-rating" data-content="6.2">
+                          <i class="fa fa-star"></i>6.2</div>
+                        <span class="movie-date">2020</span>
+                        <span>Book Seat</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="item">
+              <a href="/booking">
+                <div class="item-flip">
+                  <div class="item-inner">
+                    <img src="https://image.tmdb.org/t/p/w370_and_h556_bestv2/aQvJ5WPzZgYVDrxLX4R6cLJCEaQ.jpg" alt="Sonic the Hedgehog">
+                  </div>
+                  <div class="item-details">
+                    <div class="item-details-inner">
+                      <h2 class="movie-title">Sonic the Hedgehog</h2>
+                      <p class="movie-description">Based on the global blockbuster videogame franchise from Sega, Sonic the Hedgehog tells the story of&hellip;</p>
+                      <div class="watch-btn">
+                        <div class="imdb-rating" data-content="6.6">
+                          <i class="fa fa-star"></i>6.6</div>
+                        <span class="movie-date">2020</span>
+                        <span>Book Seat</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="item">
+              <a href="/booking">
+                <div class="item-flip">
+                  <div class="item-inner">
+                    <img src="https://image.tmdb.org/t/p/w370_and_h556_bestv2/pNM2VmqS2FBL92EJ0fUPLgoij8x.jpg" alt="The Occupant">
+                  </div>
+                  <div class="item-details">
+                    <div class="item-details-inner">
+                      <h2 class="movie-title">The Occupant</h2>
+                      <p class="movie-description">An unemployed executive is forced to sell his apartment. When he discovers that he still has the key&hellip;</p>
+                      <div class="watch-btn">
+                        <div class="imdb-rating" data-content="6.3">
+                          <i class="fa fa-star"></i>6.3</div>
+                        <span class="movie-date">2020</span>
+                        <span>Book Seat</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="item">
+              <a href="/booking">
+                <div class="item-flip">
+                  <div class="item-inner">
+                    <img src="https://image.tmdb.org/t/p/w370_and_h556_bestv2/n2C6jRK9PtPIs99RQhKtqGlsnsO.jpg" alt="My Spy">
+                  </div>
+                  <div class="item-details">
+                    <div class="item-details-inner">
+                      <h2 class="movie-title">My Spy</h2>
+                      <p class="movie-description">A hardened CIA operative finds himself at the mercy of a precocious 9-year-old girl, having been sen&hellip;</p>
+                      <div class="watch-btn">
+                        <div class="imdb-rating" data-content="6.2">
+                          <i class="fa fa-star"></i>6.2</div>
+                        <span class="movie-date">2020</span>
+                        <span>Book Seat</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="item">
+              <a href="/booking">
+                <div class="item-flip">
+                  <div class="item-inner">
+                    <img src="https://image.tmdb.org/t/p/w370_and_h556_bestv2/udDclJoHjfjb8Ekgsd4FDteOkCU.jpg" alt="Joker">
+                  </div>
+                  <div class="item-details">
+                    <div class="item-details-inner">
+                      <h2 class="movie-title">Joker</h2>
+                      <p class="movie-description">During the 1980s, a failed stand-up comedian is driven insane and turns to a life of crime and chaos&hellip;</p>
+                      <div class="watch-btn">
+                        <div class="imdb-rating" data-content="8.5">
+                          <i class="fa fa-star"></i>8.5</div>
+                        <span class="movie-date">2019</span>
+                        <span>Book Seat</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="item">
+              <a href="/booking">
+                <div class="item-flip">
+                  <div class="item-inner">
+                    <img src="https://image.tmdb.org/t/p/w370_and_h556_bestv2/sm8iVzA7kRp0d4BSIsgXjsSBMKV.jpg" alt="Emma.">
+                  </div>
+                  <div class="item-details">
+                    <div class="item-details-inner">
+                      <h2 class="movie-title">Emma.</h2>
+                      <p class="movie-description">In 1800s England, a well-meaning but selfish young woman meddles in the love lives of her friends.&hellip;</p>
+                      <div class="watch-btn">
+                        <div class="imdb-rating" data-content="6.8">
+                          <i class="fa fa-star"></i>6.8</div>
+                        <span class="movie-date">2020</span>
+                        <span>Book Seat</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="item">
+              <a href="/booking">
+                <div class="item-flip">
+                  <div class="item-inner">
+                    <img src="https://image.tmdb.org/t/p/w370_and_h556_bestv2/AtsgWhDnHTq68L0lLsUrCnM7TjG.jpg" alt="Captain Marvel">
+                  </div>
+                  <div class="item-details">
+                    <div class="item-details-inner">
+                      <h2 class="movie-title">Captain Marvel</h2>
+                      <p class="movie-description">The story follows Carol Danvers as she becomes one of the universe’s most powerful heroes when Ear&hellip;</p>
+                      <div class="watch-btn">
+                        <div class="imdb-rating" data-content="6.9">
+                          <i class="fa fa-star"></i>6.9</div>
+                        <span class="movie-date">2019</span>
+                        <span>Book Seat</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="item">
+              <a href="/booking">
+                <div class="item-flip">
+                  <div class="item-inner">
+                    <img src="https://image.tmdb.org/t/p/w370_and_h556_bestv2/pjeMs3yqRmFL3giJy4PMXWZTTPa.jpg" alt="Frozen II">
+                  </div>
+                  <div class="item-details">
+                    <div class="item-details-inner">
+                      <h2 class="movie-title">Frozen II</h2>
+                      <p class="movie-description">Elsa, Anna, Kristoff and Olaf head far into the forest to learn the truth about an ancient mystery o&hellip;</p>
+                      <div class="watch-btn">
+                        <div class="imdb-rating" data-content="7.0">
+                          <i class="fa fa-star"></i>7.0</div>
+                        <span class="movie-date">2019</span>
+                        <span>Book Seat</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="item">
+              <a href="/booking">
+                <div class="item-flip">
+                  <div class="item-inner">
+                    <img src="https://image.tmdb.org/t/p/w370_and_h556_bestv2/wUggWBMN8xUNVasYsroyUUPmaKa.jpg" alt="Blue Story">
+                  </div>
+                  <div class="item-details">
+                    <div class="item-details-inner">
+                      <h2 class="movie-title">Blue Story</h2>
+                      <p class="movie-description">Blue Story is a tragic tale of a friendship between Timmy and Marco, two young boys from opposing po&hellip;</p>
+                      <div class="watch-btn">
+                        <div class="imdb-rating" data-content="5.5">
+                          <i class="fa fa-star"></i>5.5</div>
+                        <span class="movie-date">2019</span>
+                        <span>Book Seat</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="pagination">
+              <a href='/booking' ><span class="current">BOOK NOW</span></a>
+            </div>
+            
+          </div>
+        </section>
+      </main>
+    </div>
+  <!-- partial -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script><script  src="scriptfront.js" th:href="@{/scriptfront.css}"></script>
+  
+  </body>
+  </html>
+  

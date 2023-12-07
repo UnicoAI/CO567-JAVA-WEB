@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<link>
+    <meta charset="UTF-8">
+    <title>Booking Page</title>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+
+    <link rel="stylesheet" href="style.css">
+  
+    <style>
+      .loggingform{
+          position:fixed;
+          top:30%;
+          bottom:30%;
+          left:30%;
+          width:35%;
+          background-color: transparent;
+          z-index: 10000;
+          display:none;
+      }
+  
+  .login-form-wrap {
+      width: 100%;
+      
+     background-repeat: no-repeat;
+      background-position: center;
+      background-position: center;
+      background-size: cover;}
+      .login-box {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          height: 100%;}
+          .login-content-warp {
+              padding: 30px;
+              background: #505050d1;
+              width: 280px;
+              display: flex;
+              justify-content: center;
+              flex-direction: column;
+              align-items: center;
+              border-radius: 35px;
+              border-top: 5px solid #94afda;}
+  
+              .profile-form {
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;}
+  
+          
+              
+              .butn-sign {
+                  padding: 20px 0px;
+                  width: 100%;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;}
+                  .button {
+                      background-color: rgb(66, 123, 238);
+                      color: #2a2a2a;
+                      border: none;
+                      font-weight: 600;
+                      height: 40px;
+                      width: 74%;
+                      border-radius: 8px;
+                      font-size: 16px;
+                      text-align: center;
+                      text-transform: capitalize;
+                      border: 2px solid #91add8;}
+                      .button:hover {
+                          background-color: #9e9e9e00;
+                          color: #fffcfc;
+                          border: 2px solid #91afd8;
+                          cursor: pointer;
+                          transition: 1s;
+                      }
+                      .buttonclose {
+                      background-color: transparent;
+                      color: #cf3030;
+                      cursor: pointer;
+                     }
+                     .buttonclose:hover {
+                         
+                          color: rgb(204, 108, 239);
+                         
+                          cursor: pointer;
+                          transition: 1s;
+                      }
+                
+              .form {
+                  width: 100%;
+              }
+                  .email-input,
+                  .password-input {
+                      margin: 12px 0px;
+                      position: relative;}
+                      .email {
+                          position: absolute;
+                          top: 50%;
+                          right: 0;
+                          transform: translate(-50%, -50%);
+                          font-size: 18px;
+                          color: #7c7c7c;
+                      }
+                      .input {
+                          
+                          border: none;
+                          width: 100%;
+                          font-size: 16px;
+                          padding-left: 10px;}
+                          &:focus-visible {
+                              outline: none;
+                          }
+                          &::placeholder {
+                              color: gray;
+                          }
+                    
+      
+              
+        
+  </style>
+</head>
+<body>
+   
+<body class="overview">
+
+  <div class="loggingform" id="logginform">
+
+    <div class="login-form-wrap">
+        <div class="login-box">
+            <div class="login-content-warp">
+                <div class="profile-form">
+                     <span class="profile-title"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="rgb(66, 123, 238)" class="bi bi-person" viewBox="0 0 16 16">
+                        <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664z"/>
+                      </svg> <p th:inline="text">Hy,<span th:remove="tag" sec:authentication="name"></span>!</p>
+                    </span>
+                       </div>
+
+      <form th:action="@{/logout}" method="post">
+       
+                   
+                      
+                    <div class="butn-sign">
+                        <input type="submit" value="Sign Out" class="button" /><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-door-open" viewBox="0 0 16 16">
+                            <path d="M8.5 10c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1"/>
+                            <path d="M10.828.122A.5.5 0 0 1 11 .5V1h.5A1.5 1.5 0 0 1 13 2.5V15h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V1.5a.5.5 0 0 1 .43-.495l7-1a.5.5 0 0 1 .398.117zM11.5 2H11v13h1V2.5a.5.5 0 0 0-.5-.5M4 1.934V15h6V1.077z"/>
+                          </svg>
+                    </div>
+                    <div class="butn-sign">
+                        <a  class="buttonclose" onclick="toggleContainer()"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+                          </svg></a>
+                    </div>
+                </form>
+
+                
+
+                
+            </div>
+        </div>
+    </div>
+   
+</div>
+
+<script>
+function toggleContainer() {
+var container = document.getElementById('logginform');
+var currentDisplay = container.style.display;
+
+// Toggle between "block" and "none"
+container.style.display = (currentDisplay === 'none') ? 'block' : 'none';
+}
+</script>
+  
+    <div class="sidebar sb-left">
+      <nav class="mobile-nav">
+        <ul>
+          <li ><a onclick="toggleContainer() "><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+            <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664z"/>
+          </svg><p th:inline="text">Hy,<span th:remove="tag" sec:authentication="name"></span>!</p>
+          </a></li>
+          <li class="active"><a href="/"><i class="fa fa-film"></i><span>Bucks Center</span></a></li>
+          <li><a href="/booking"><i class="fa fa-ticket"></i><span>Book Now</span></a></li>
+          <li><a href="/"><i class="fa fa-trophy"></i><span>Top Art</span></a></li>
+          <li><a href="/"><i class="fa fa-random"></i><span>Random</span></a></li>
+      
+          <li><a href="mailto: info@unicoais.com"><i class="fa fa-envelope"></i><span>Contact us</span></a></li>
+        </ul>
+      </nav>
+    </div>
+    <div id="site-container">
+      <main id="main">
+        <header id="main-header">
+          <div class="inner-container">
+            <div class="sb-toggle-left">
+              <span class="menu-icon"></span>
+              <span class="menu-icon-text">Menu</span>
+            </div>
+            <h1><a href="/" >BCPA</a></h1>
+            <ul class="header-nav">
+              <li><a href="https://facebook.com/" target="_blank" rel="nofollow"><i class="fa fa-facebook"></i></a></li>
+              <li><a href="https://twitter.com" target="_blank" rel="nofollow"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="https://www.instagram.com/" target="_blank" rel="nofollow"><i class="fa fa-instagram"></i></a></li>
+            </ul>
+          </div>
+        </header>
+        <div id="header-secondary">
+          <div class="inner-container">
+            <nav class="filters">
+              <ul>
+               
+                <li class="dropdown abc-filter">
+                  <div class="dropdown-toggle" data-toggle="dropdown">ABC<i class="fa fa-angle-down"></i></div>
+                  <ul class="dropdown-menu">
+                    <li class="abc"><a href="/?ap=numeric">#</a></li>
+                    <li class="abc"><a href="/?ap=A">A</a></li>
+                    <li class="abc"><a href="/?ap=B">B</a></li>
+                    <li class="abc"><a href="/?ap=C">C</a></li>
+                    <li class="abc"><a href="/?ap=D">D</a></li>
+                    <li class="abc"><a href="/?ap=E">E</a></li>
+                    <li class="abc"><a href="/?ap=F">F</a></li>
+                    <li class="abc"><a href="/?ap=G">G</a></li>
+                    <li class="abc"><a href="/?ap=H">H</a></li>
+                    <li class="abc"><a href="/?ap=I">I</a></li>
+                    <li class="abc"><a href="/?ap=J">J</a></li>
+                    <li class="abc"><a href="/?ap=K">K</a></li>
+                    <li class="abc"><a href="/?ap=L">L</a></li>
+                    <li class="abc"><a href="/?ap=M">M</a></li>
+                    <li class="abc"><a href="/?ap=N">N</a></li>
+                    <li class="abc"><a href="/?ap=O">O</a></li>
+                    <li class="abc"><a href="/?ap=P">P</a></li>
+                    <li class="abc"><a href="/?ap=Q">Q</a></li>
+                    <li class="abc"><a href="/?ap=R">R</a></li>
+                    <li class="abc"><a href="/?ap=S">S</a></li>
+                    <li class="abc"><a href="/?ap=T">T</a></li>
+                    <li class="abc"><a href="/?ap=V">V</a></li>
+                    <li class="abc"><a href="/?ap=W">W</a></li>
+                    <li class="abc"><a href="/?ap=Y">Y</a></li>
+                    <li class="abc"><a href="/?ap=Z">Z</a></li>
+                  </ul>
+                </li>
+               
+              </ul>
+            </nav>
+            <p id="slogan">Book a Movie Online</p>
+          </div>
+        </div>
+        <section id="content" class="inner-container">
+
+    <h2>Book a Ticket</h2>
+    <ul class="showcase">
+        <li>
+            <div class="seat"></div>
+            <small>N/A</small>
+        </li>
+        <li>
+            <div class="seat selected"></div>
+            <small>Selected</small>
+        </li>
+        <li>
+            <div class="seat occupied"></div>
+            <small>Occupied</small>
+        </li>
+    </ul>
+
+    <form action="/bookTicket" method="post">
+        <div class="movie-container">
+            <div class="d-grid gap-2">
+                <label for="event">Select Event:</label>
+                <select id="event" name="event" required class="btn btn-info btn-lg" onchange="updateImage()">
+                    <option th:each="event : ${events}" th:value="${event}" th:utext="${event}"></option>
+                </select>
+            </div><br>
+               
+                
+</div>
+
+
+<div class="container" style="background-color: transparent;">
+    <div class="movie-screen" >
+      <img src="img/screen-thumb.png"  ><br>
+       <!-- Add an image element with a default source -->
+<img id="selectedImage" src="" alt="Selected Movie Image" class="movie-image" width="280px" height="auto" th:value="${movieImage}" th:text="${movieImage}"/>
+
+<!-- JavaScript function to update the image source based on the selected event -->
+<script th:inline="javascript">
+    function updateImage() {
+        var eventSelect = document.getElementById('event');
+        var selectedEvent = eventSelect.options[eventSelect.selectedIndex].value;
+
+        // Extract the image URL from the selected option
+        var imageUrl = /src=['"]([^'"]+)['"]/g.exec(selectedEvent)[1];
+
+        // Update the source of the image element
+        document.getElementById('selectedImage').src = imageUrl || '';
+    }
+
+    // Call the function once on page load to set the initial image
+    window.onload = updateImage;
+</script>
+    </div>
+    <div class="row-container">
+        <div class="row">
+            <div class="seat" th:each="seat : ${seats}" th:value="${seat}" th:text="${seat}" onclick="updatePrice(this)">
+                <span th:text="${seat}"></span>
+            </div>
+        </div>
+        
+        
+        
+        <h5 class='subtitle'>GOLD - £15.00</h5>
+        <div class="row">
+            <div class="seat" th:each="seat : ${seats}" th:value="${seat}" th:text="${seat}" onclick="updatePrice(this)">
+                <span th:text="${seat}"  ></span>
+            </div>
+            <!-- Additional seats or empty seats as needed -->
+          
+        </div>
+        <div class="row">
+            <div class="seat" th:each="seat : ${seats}" th:value="${seat}" th:text="${seat}" onclick="updatePrice(this)">
+                <span th:text="${seat}"></span>
+            </div>
+        </div>
+        <h5 class='subtitle'>DIAMOND - £19.00</h5>
+        <div class="row">
+          
+            <div class="seat" th:each="seat : ${seats}" th:value="${seat}" th:text="${seat}" onclick="updatePrice(this)">
+                <span th:text="${seat}"></span>
+            </div>
+        </div>
+
+        <div class="text-wrapper">
+             <label for="seat" class="text"></label>
+            <select id="seat" name="seat" STYLE="visibility: hidden;" required onchange="updatePrice()">
+                <option th:each="seat : ${seats}" th:value="${seat}" th:text="${seat}"></option>
+            </select><br>
+        </div>
+    </div>
+
+</div>
+
+       
+<div class="row">
+    <div class="col">
+      <center>
+        <!-- Display the price dynamically -->
+        <p id="selectedPrice" class="btn btn-light btn-lg"><span>Selected Price:</span> </p>
+        <p id="selectedSeat" class="btn btn-light btn-lg"><span>Selected Seat:</span> </p>
+        </center>
+</div>
+        <input type="hidden" id="price" name="price" value=""/>
+        <input type="hidden" id="seat" name="seat" value=""/>
+
+        
+        </div>
+        <div class="d-grid gap-2">
+        <button type="submit" class="btn btn-primary btn-lg"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-cart-plus" viewBox="0 0 16 16">
+          <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9z"/>
+          <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0m7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
+        </svg> Book Ticket</button></div>
+    </form>
+   
+    <script>
+        function updatePrice(clickedSeat) {
+            var selectedSeat = clickedSeat.innerText.trim();
+        
+            // Set the default price
+            var selectedPrice = 0.0;
+        
+            // Determine the price based on the seat ID
+            if (selectedSeat.startsWith('A')) {
+                selectedPrice = 10.0;
+            } else if (selectedSeat.startsWith('B')) {
+                selectedPrice = 15.0;
+            } else if (selectedSeat.startsWith('C')) {
+                selectedPrice = 18.0;
+            } else if (selectedSeat.startsWith('D')) {
+                selectedPrice = 19.0;
+            } else {
+                // Handle other cases if needed
+                console.error("Unsupported seat ID");
+            }
+        
+            // Display the price dynamically
+            document.getElementById("selectedPrice").innerText = "Selected Price: " + selectedPrice;
+        
+            // Set the selected price in the hidden input field
+            document.getElementById("price").value = selectedPrice;
+              // Set the selected seat value dynamically
+              document.getElementById("selectedSeat").innerText = "Selected Seat: " + selectedSeat;
+            
+            // Set the selected seat value in the hidden input field
+            document.getElementById("seat").value = selectedSeat;
+        }
+    </script>
+    <script src="script.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script><script  src="scriptfront.js"></script>
+
+</body>
+</html>

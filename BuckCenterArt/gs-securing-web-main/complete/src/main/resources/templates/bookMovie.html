@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link>
+    <meta charset="UTF-8">
+    <title>Booking Page</title>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+
+    <link rel="stylesheet" href="style.css"></link>
+    
+</head>
+<body>
+    <h2>Available Tickets</h2>
+    <table>
+        <tr>
+            <th>Event</th>
+            <th>Seat</th>
+            <th>Price</th>
+        </tr>
+        <tr th:each="ticket : ${tickets}">
+            <td th:text="${ticket.event}"></td>
+            <td th:text="${ticket.seat}"></td>
+            <td th:text="${ticket.price}"></td>
+        </tr>
+    </table>
+
+    <h2>Book a Ticket</h2>
+
+    <form action="/bookTicket" method="post">
+        <div class="movie-container">
+            <div class="d-grid gap-2">
+        <label for="event" >Select Event:</label>
+        <select id="event" name="event" required class="btn btn-info btn-lg">
+            <option th:each="event : ${events}" th:value="${event}" th:text="${event}"></option>
+        </select></div><br>
+</div>
+<ul class="showcase">
+    <li>
+        <div class="seat"></div>
+        <small>N/A</small>
+    </li>
+    <li>
+        <div class="seat selected"></div>
+        <small>Selected</small>
+    </li>
+    <li>
+        <div class="seat occupied"></div>
+        <small>Occupied</small>
+    </li>
+</ul>
+
+<div class="container">
+    <div class="movie-screen">
+        <img src='img/screen-thumb.png' alt='screen' />
+    </div>
+    <div class="row-container">
+        <div class="row">
+            <div class="seat" th:each="seat : ${seats}" th:value="${seat}" th:text="${seat}" onclick="updatePrice(this)">
+                <span th:text="${seat}"></span>
+            </div>
+        </div>
+        
+        
+        
+        <h5 class='subtitle'>GOLD - £15.00</h5>
+        <div class="row">
+            <div class="seat" th:each="seat : ${seats}" th:value="${seat}" th:text="${seat}" onclick="updatePrice(this)">
+                <span th:text="${seat}"></span>
+            </div>
+            <!-- Additional seats or empty seats as needed -->
+          
+        </div>
+        <div class="row">
+            <div class="seat" th:each="seat : ${seats}" th:value="${seat}" th:text="${seat}" onclick="updatePrice(this)">
+                <span th:text="${seat}"></span>
+            </div>
+        </div>
+        <h5 class='subtitle'>DIAMOND - £19.00</h5>
+        <div class="row">
+          
+            <div class="seat" th:each="seat : ${seats}" th:value="${seat}" th:text="${seat}" onclick="updatePrice(this)">
+                <span th:text="${seat}"></span>
+            </div>
+        </div>
+
+        <div class="text-wrapper">
+             <label for="seat" class="text"></label>
+            <select id="seat" name="seat" STYLE="visibility: hidden;" required onchange="updatePrice()">
+                <option th:each="seat : ${seats}" th:value="${seat}" th:text="${seat}"></option>
+            </select><br>
+        </div>
+    </div>
+
+</div>
+
+       
+<div class="row">
+    <div class="col">
+        <!-- Display the price dynamically -->
+        <p id="selectedPrice" class="btn btn-light btn-lg"><span>Selected Price:</span> </p>
+</div>
+        <input type="hidden" id="price" name="price" value=""/>
+        </div>
+        <div class="d-grid gap-2">
+        <button type="submit" class="btn btn-primary btn-lg">Book Ticket</button></div>
+    </form>
+
+    <script>
+        function updatePrice(clickedSeat) {
+            var selectedSeat = clickedSeat.innerText.trim();
+        
+            // Set the default price
+            var selectedPrice = 0.0;
+        
+            // Determine the price based on the seat ID
+            if (selectedSeat.startsWith('A')) {
+                selectedPrice = 10.0;
+            } else if (selectedSeat.startsWith('B')) {
+                selectedPrice = 15.0;
+            } else if (selectedSeat.startsWith('C')) {
+                selectedPrice = 18.0;
+            } else if (selectedSeat.startsWith('D')) {
+                selectedPrice = 19.0;
+            } else {
+                // Handle other cases if needed
+                console.error("Unsupported seat ID");
+            }
+        
+            // Display the price dynamically
+            document.getElementById("selectedPrice").innerText = "Selected Price: " + selectedPrice;
+        
+            // Set the selected price in the hidden input field
+            document.getElementById("price").value = selectedPrice;
+        }
+    </script>
+    <script src="script.js"></script>
+    
+</body>
+</html>
