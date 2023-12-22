@@ -62,7 +62,7 @@ public class BookingController {
     return "redirect:/login";
 }
 }
- 
+ @PreAuthorize("hasRole('ROLE_USER')")
    @PostMapping("/bookTicket")
     public String bookTicket(
         
